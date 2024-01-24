@@ -1,5 +1,5 @@
 import { css } from '../../../styled-system/css'
-import { SummaryCard, SummaryCardLeave, SummaryCardTotal } from './components/SummaryCard'
+import { SummaryCard, SummaryCardLeave, SummaryCardTotal } from './SummaryCards/SummaryCard'
 
 export function Summary () {
   return (
