@@ -1,6 +1,7 @@
 import { PriceHighLight, mainStyle, tableStyle, tdStyle } from './styles'
 import { Header } from '../../components/Header/Header'
 import { Summary } from '../../components/Summary'
+import { SearchForm } from './components/SearchForm'
 
 export function Transactions () {
   return (
@@ -9,6 +10,8 @@ export function Transactions () {
       <Summary />
 
     <main className={mainStyle}>
+      <SearchForm />
+
       <table className={tableStyle}>
         <tbody>
           <tr>
