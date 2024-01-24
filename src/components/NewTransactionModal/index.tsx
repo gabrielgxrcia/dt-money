@@ -1,20 +1,9 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import { css } from '../../../styled-system/css'
 import { ArrowCircleDown, ArrowCircleUp, X } from 'phosphor-react'
+import * as RadioGroup from '@radix-ui/react-radio-group'
+import { TransactionTypeRadio } from './TransactionTypeRadio'
 
-interface TransactionTypeButtonProps {
-  variant: 'income' | 'outcome'
-  children: React.ReactNode
-}
-
-const TransactionTypeButton: React.FC<TransactionTypeButtonProps> = ({ variant, children }) => {
-  const color = variant === 'income' ? '#00B37E' : '#F75A68';
-  return (
-    <button className={css({ background: '#29292E', p: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', borderRadius: '6px', cursor: 'pointer', border: '0', color })}>
-      {children}
-    </button>
-  )
-}
 
 const inputStyled = css({ borderRadius: '6px', border: '0', background: '#121214', color: '#C4C4CC', p: '1rem', '&::placeholder': { color: '#7C7C8A' }})
 
@@ -33,14 +22,14 @@ export function NewTransactionModal () {
           <input className={inputStyled} type="number" placeholder='Preço' required />
           <input className={inputStyled} type="text" placeholder='Categoria' required />
 
-          <div className={css({ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem', mt: '0.5rem' })}>
-            <TransactionTypeButton variant="income"><ArrowCircleUp size={24} />
+          <RadioGroup.Root className={css({ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem', mt: '0.5rem' })}>
+            <TransactionTypeRadio variant="income"><ArrowCircleUp size={24} />
             Entrada
-            </TransactionTypeButton>
-            <TransactionTypeButton variant="outcome"><ArrowCircleDown size={24} />
+            </TransactionTypeRadio>
+            <TransactionTypeRadio variant="outcome"><ArrowCircleDown size={24} />
             Saída
-            </TransactionTypeButton>
-          </div>
+            </TransactionTypeRadio>
+          </RadioGroup.Root>
 
           <button className={css({ height: '58px', border: '0', background: '#00875F', color: '#fff', fontWeight: 'bold', padding: '0 1.25rem', borderRadius: '6px', mt: '1.5rem', cursor: 'pointer', '&:hover': { background: '#015F43', transition: 'background-color 0.2s' }})} type='submit'>Cadastrar</button>
 
