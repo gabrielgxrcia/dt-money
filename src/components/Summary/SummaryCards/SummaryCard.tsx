@@ -2,6 +2,7 @@ import { ArrowCircleDown, ArrowCircleUp, CurrencyDollar } from "phosphor-react";
 import { css } from "../../../../styled-system/css";
 import { useAtom } from "jotai";
 import { transactionsAtom } from "../../../pages/Transactions/atoms/transactionAtoms";
+import { priceFormatter } from '../../../utils/formatter'; 
 
 interface SummaryCardProps {
   variant?: 'green'
@@ -21,7 +22,7 @@ export function SummaryCard () {
           <span>Entradas</span>
           <ArrowCircleUp size={32} color="#00b37e"/>
       </header>
-        <strong className={css({ display: 'block', mt: '1rem', fontSize: '2rem'})}>R$ {income.toFixed(2)}</strong>
+        <strong className={css({ display: 'block', mt: '1rem', fontSize: '2rem'})}>{priceFormatter.format(income)}</strong>
     </div>
   )
 }
@@ -40,7 +41,7 @@ export function SummaryCardLeave () {
           <span>Saída</span>
           <ArrowCircleDown size={32} color="#f75a68"/>
       </header>
-        <strong className={css({ display: 'block', mt: '1rem', fontSize: '2rem'})}>R$ {outcome.toFixed(2)}</strong>
+        <strong className={css({ display: 'block', mt: '1rem', fontSize: '2rem'})}>{priceFormatter.format(outcome)}</strong>
     </div>
   )
 }
@@ -59,7 +60,7 @@ export const SummaryCardTotal: React.FC<SummaryCardProps> = ({ variant }) => {
           <span>Total</span>
           <CurrencyDollar size={32} color="#fff"/>
       </header>
-        <strong className={css({ display: 'block', mt: '1rem', fontSize: '2rem'})}>R$ {total.toFixed(2)}</strong>
+        <strong className={css({ display: 'block', mt: '1rem', fontSize: '2rem'})}>{priceFormatter.format(total)}</strong>
     </div>
   )
 }
