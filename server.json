@@ -1,7 +1,7 @@
 {
-  "transactions" : [
+  "transactions": [
     {
-      "id": 1,
+      "id": "1",
       "description": "Desenvolvimento de site",
       "type": "income",
       "category": "Venda",
@@ -9,7 +9,7 @@
       "createdAt": "2024-01-25T00:09:19.765Z"
     },
     {
-      "id": 2,
+      "id": "2",
       "description": "Hamburguer",
       "type": "outcome",
       "category": "Alimentação",
@@ -17,12 +17,36 @@
       "createdAt": "2024-01-25T00:11:46.084Z"
     },
     {
-      "id": 3,
+      "id": "3",
       "description": "Mouse",
       "type": "outcome",
       "category": "Eletrônicos",
       "price": 1350,
       "createdAt": "2024-01-25T00:10:46.084Z"
-    } 
+    },
+    {
+      "id": "7f93",
+      "description": "Celular",
+      "price": 4000,
+      "category": "Eletrônicos",
+      "type": "outcome",
+      "createdAt": "2024-01-25T20:50:33.405Z"
+    },
+    {
+      "id": "4",
+      "description": "Lanches",
+      "type": "income",
+      "category": "Alimento",
+      "price": 1000,
+      "createdAt": "2024-01-23T00:09:19.765Z"
+    },
+    {
+      "id": "fee3",
+      "description": "Iorgute de Banana",
+      "price": 4,
+      "category": "Alimentos",
+      "type": "outcome",
+      "createdAt": "2024-01-25T21:14:22.198Z"
+    }
   ]
 }
