@@ -5,33 +5,21 @@ import * as RadioGroup from '@radix-ui/react-radio-group';
 import { TransactionTypeRadio } from './TransactionTypeRadio';
 import * as z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 
 const newTransactionFormSchema = z.object({
   description: z.string(),
   price: z.number(),
   category: z.string(),
+  type: z.enum(['income', 'outcome']),
 });
 
 type newTransactionFormInputs = z.infer<typeof newTransactionFormSchema>;
 
-const inputStyled = css({
-  borderRadius: '6px',
-  border: '0',
-  background: '#121214',
-  color: '#C4C4CC',
-  p: '1rem',
-  '&::placeholder': { color: '#7C7C8A' },
-});
+const inputStyled = css({ borderRadius: '6px', border: '0', background: '#121214', color: '#C4C4CC', p: '1rem', '&::placeholder': { color: '#7C7C8A' } });
 
 export function NewTransactionModal() {
-  const {
-    register,
-    handleSubmit,
-    formState: { isSubmitting },
-  } = useForm<newTransactionFormInputs>({
-    resolver: zodResolver(newTransactionFormSchema),
-  });
+  const { control, register, handleSubmit, formState: { isSubmitting } } = useForm<newTransactionFormInputs>({ resolver: zodResolver(newTransactionFormSchema) });
 
   async function handleCreateNewTransaction(data: newTransactionFormInputs) {
     await new Promise(resolve => setTimeout(resolve, 2000));
@@ -52,38 +40,26 @@ export function NewTransactionModal() {
           <input className={inputStyled} type="number" placeholder='Preço' required {...register('price', { valueAsNumber: true })} />
           <input className={inputStyled} type="text" placeholder='Categoria' required {...register('category')} />
 
-          <RadioGroup.Root className={css({ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem', mt: '0.5rem' })}>
-            <TransactionTypeRadio variant="income">
-              <ArrowCircleUp size={24} />
-              Entrada
-            </TransactionTypeRadio>
-            <TransactionTypeRadio variant="outcome">
-              <ArrowCircleDown size={24} />
-              Saída
-            </TransactionTypeRadio>
-          </RadioGroup.Root>
+          <Controller 
+            control={control}
+            name="type"
+            render={({ field }) => (
+              <RadioGroup.Root onValueChange={field.onChange} value={field.value} className={css({ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem', mt: '0.5rem' })}>
+                <TransactionTypeRadio variant="income">
+                  <ArrowCircleUp size={24} />
+                  Entrada
+                </TransactionTypeRadio>
+                <TransactionTypeRadio variant="outcome">
+                  <ArrowCircleDown size={24} />
+                  Saída
+                </TransactionTypeRadio>
+              </RadioGroup.Root>
+            )}
+          />
 
           <button
             disabled={isSubmitting}
-            className={css({
-              height: '58px',
-              border: '0',
-              background: '#00875F',
-              color: '#fff',
-              fontWeight: 'bold',
-              padding: '0 1.25rem',
-              borderRadius: '6px',
-              mt: '1.5rem',
-              cursor: 'pointer',
-              '&:disabled': {
-                opacity: '0.6',
-                cursor: 'not-allowed',
-              },
-              '&:not(:disabled):hover': {
-                background: '#015F43',
-                transition: 'background-color 0.2s',
-              },
-            })}
+            className={css({ height: '58px', border: '0', background: '#00875F', color: '#fff', fontWeight: 'bold', padding: '0 1.25rem', borderRadius: '6px', mt: '1.5rem', cursor: 'pointer', '&:disabled': { opacity: '0.6', cursor: 'not-allowed' }, '&:not(:disabled):hover': { background: '#015F43', transition: 'background-color 0.2s' } })}
             type='submit'
           >
             Cadastrar
