@@ -1,15 +1,7 @@
-import axios from 'axios'
+// transactionAtoms.ts
 import { atom, useAtom } from 'jotai'
 import { useEffect } from 'react'
-
-export interface Transaction {
-  id: number
-  description: string
-  type: 'income' | 'outcome'
-  price: number
-  category: string
-  createdAt: string
-}
+import { api } from '../../../lib/axios'
 
 export interface Transaction {
   id: number
@@ -24,8 +16,8 @@ export const transactionsAtom = atom<Transaction[]>([])
 
 export const loadTransactionsAtom = atom(
   null,
-  async (get, set, query: string = '') => {
-    const response = await axios.get('http://localhost:3333/transactions')
+  async (_get, set, query: string = '') => {
+    const response = await api.get('/transactions')
     if (response.data !== null) {
       const transactions = response.data as Transaction[]
       if (query) {
