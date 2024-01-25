@@ -47,6 +47,14 @@
       "category": "Alimentos",
       "type": "outcome",
       "createdAt": "2024-01-25T21:14:22.198Z"
+    },
+    {
+      "id": "2181",
+      "description": "Bala",
+      "price": 5,
+      "category": "Alimentos",
+      "type": "outcome",
+      "createdAt": "2024-01-25T21:32:49.049Z"
     }
   ]
 }

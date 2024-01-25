@@ -7,11 +7,16 @@ interface TransactionRowProps {
   priceFormatter: Intl.NumberFormat
 }
 
-export function TransactionRow({ transaction, dateFormatter, priceFormatter }: TransactionRowProps) {
+export function TransactionRow({
+  transaction,
+  dateFormatter,
+  priceFormatter,
+}: TransactionRowProps) {
   const formattedDate = dateFormatter.format(new Date(transaction.createdAt))
-  const formattedPrice = transaction.type === 'outcome' 
-    ? `- ${priceFormatter.format(transaction.price)}`
-    : priceFormatter.format(transaction.price)
+  const formattedPrice =
+    transaction.type === 'outcome'
+      ? `- ${priceFormatter.format(transaction.price)}`
+      : priceFormatter.format(transaction.price)
 
   return (
     <tr key={transaction.id}>

@@ -4,11 +4,14 @@ import { Summary } from '../../components/Summary/SummaryContainer'
 import { SearchForm } from './components/SearchForm/SearchForm'
 import { useEffect, useState } from 'react'
 import { useAtom } from 'jotai'
-import { transactionsAtom, loadTransactionsAtom } from './atoms/transactionAtoms'
+import {
+  transactionsAtom,
+  loadTransactionsAtom,
+} from './atoms/transactionAtoms'
 import { TransactionRow } from './components/TransactionsRow/TransactionRow'
-import { dateFormatter, priceFormatter } from '../../utils/formatter' 
+import { dateFormatter, priceFormatter } from '../../utils/formatter'
 
-export function Transactions () {
+export function Transactions() {
   const [transactions] = useAtom(transactionsAtom)
   const [, loadTransactions] = useAtom(loadTransactionsAtom)
   const [isLoading, setIsLoading] = useState(true)
@@ -31,8 +34,13 @@ export function Transactions () {
 
         <table className={tableStyle}>
           <tbody>
-            {transactions.map(transaction => (
-              <TransactionRow key={transaction.id} transaction={transaction} dateFormatter={dateFormatter} priceFormatter={priceFormatter} /> 
+            {transactions.map((transaction) => (
+              <TransactionRow
+                key={transaction.id}
+                transaction={transaction}
+                dateFormatter={dateFormatter}
+                priceFormatter={priceFormatter}
+              />
             ))}
           </tbody>
         </table>

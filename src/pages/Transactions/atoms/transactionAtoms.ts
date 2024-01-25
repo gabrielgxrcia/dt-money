@@ -32,15 +32,15 @@ export const loadTransactionsAtom = atom(
     if (response.data !== null) {
       const transactions = response.data as Transaction[]
       if (query) {
-        const filteredTransactions = transactions.filter(transaction =>
-          transaction.description.toLowerCase().includes(query.toLowerCase())
+        const filteredTransactions = transactions.filter((transaction) =>
+          transaction.description.toLowerCase().includes(query.toLowerCase()),
         )
         set(transactionsAtom, filteredTransactions)
       } else {
         set(transactionsAtom, transactions)
       }
     }
-  }
+  },
 )
 
 export function useTransactions() {
@@ -58,7 +58,7 @@ export function useTransactions() {
       createdAt: new Date(),
     })
 
-    setTransactions(state => [response.data, ...state])
+    setTransactions((state) => [response.data, ...state])
   }
 
   useEffect(() => {
