@@ -2,7 +2,7 @@ import * as Dialog from '@radix-ui/react-dialog'
 import { css } from '../../../styled-system/css'
 
 import logoImg from '../../assets/logo.svg'
-import { NewTransactionModal } from '../NewTransactionModal'
+import { NewTransactionModal } from '../NewTransactionModal/NewTransactionModalContainer'
 
 export function Header () {
   return (
