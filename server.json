@@ -15,7 +15,14 @@
       "category": "Alimentação",
       "price": 50,
       "createdAt": "2024-01-25T00:11:46.084Z"
-    }
-    
+    },
+    {
+      "id": 3,
+      "description": "Mouse",
+      "type": "outcome",
+      "category": "Eletrônicos",
+      "price": 1350,
+      "createdAt": "2024-01-25T00:10:46.084Z"
+    } 
   ]
 }
