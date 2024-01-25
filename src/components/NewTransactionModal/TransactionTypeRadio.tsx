@@ -12,7 +12,6 @@ export const TransactionTypeRadio: React.FC<TransactionTypeButtonProps> = ({ var
   const checkedColor = variant === 'income' ? '#00875F' : '#AB222E';
 
   const childrenWithProps = React.Children.map(children, (child, index) => {
-
     if (React.isValidElement(child) && child.type === 'svg' && index === 0) {
       return React.cloneElement(child as React.ReactElement<React.SVGProps<SVGSVGElement>>, { fill: '#fff' });
     }
@@ -31,6 +30,10 @@ export const TransactionTypeRadio: React.FC<TransactionTypeButtonProps> = ({ var
       cursor: 'pointer', 
       border: '0', 
       color,
+      '&[data-state="unchecked"]:hover': {
+        background: '#323238',
+        transition: 'background-color 0.2s',
+      },
       '&[data-state="checked"]': {
         color: '#fff',
         background: checkedColor,
