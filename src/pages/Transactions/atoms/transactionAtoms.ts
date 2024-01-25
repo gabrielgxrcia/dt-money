@@ -1,4 +1,3 @@
-// transactionAtoms.ts
 import { atom, useAtom } from 'jotai'
 import { useEffect } from 'react'
 import { api } from '../../../lib/axios'
